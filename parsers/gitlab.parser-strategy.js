@@ -78,7 +78,7 @@ class GitlabParserStrategy extends ParserStrategy {
      * @param data
      */
     parseBuildEvent(data) {
-        const EXPECTED_STATUSES = ["running", "success", "failed"];
+        const EXPECTED_STATUSES = ["running", "success", "failed", "canceled"];
         const buildStatus = jp.get(data, "/build_status");
         if (EXPECTED_STATUSES.indexOf(buildStatus) === -1) {
             return null;
@@ -115,6 +115,11 @@ class GitlabParserStrategy extends ParserStrategy {
                 stateText = "ошибка";
                 result.color = "#d9534f";
                 result.footer = `длительность ${Math.ceil(jp.get(data, "/build_duration"))} с`;
+                break;
+    
+            case "canceled":
+                stateText = "отменено";
+                result.color = "#999999";
                 break;
                 
         }

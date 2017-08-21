@@ -1,0 +1,53 @@
+{
+  "expected": {
+    "attachments": [
+      {
+        "text": "<https://gitlab.url/john.doe/awesome-project|project-name> : <https://gitlab.url/john.doe/awesome-project/commit/2222222222222222222222222222222222222222|22222222> : ошибка <https://gitlab.url/john.doe/awesome-project/builds/1000|job-name #1000>",
+        "color": "#d9534f",
+        "footer": "длительность 9 с"
+      }
+    ]
+  },
+  "event": {
+    "object_kind": "build",
+    "ref": "master",
+    "tag": false,
+    "before_sha": "2222222222222222222222222222222222222222",
+    "sha": "2222222222222222222222222222222222222222",
+    "build_id": 1000,
+    "build_name": "job-name",
+    "build_stage": "after_base",
+    "build_status": "failed",
+    "build_started_at": "2017-06-26 21:53:36 +0300",
+    "build_finished_at": "2017-06-26 21:53:45 +0300",
+    "build_duration": 8.624114454,
+    "build_allow_failure": false,
+    "project_id": 211,
+    "project_name": "John Doe / project-name",
+    "user": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@company.com"
+    },
+    "commit": {
+      "id": 2,
+      "sha": "2222222222222222222222222222222222222222",
+      "message": "Awesome commit message\n",
+      "author_name": "john.doe",
+      "author_email": "john.doe@company.com",
+      "status": "failed",
+      "duration": 19,
+      "started_at": "2017-06-26 21:53:25 +0300",
+      "finished_at": "2017-06-26 21:53:45 +0300"
+    },
+    "repository": {
+      "name": "project-name",
+      "description": "Description of the awesome project",
+      "url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "homepage": "https://gitlab.url/john.doe/awesome-project",
+      "git_http_url": "https://gitlab.url/john.doe/awesome-project.git",
+      "git_ssh_url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "visibility_level": 0
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "expected": {
+    "text": "John Doe запушил(а) в ветку <https://gitlab.url/john.doe/awesome-project/commits/master|master> проекта <https://gitlab.url/john.doe/awesome-project|Name of the awesome project>",
+    "attachments": [
+      {
+        "text": "<https://gitlab.url/john.doe/awesome-project/commit/2222222222222222222222222222222222222222|22222222> Awesome commit message\n",
+        "footer": "john.doe"
+      }
+    ]
+  },
+  "event": {
+    "object_kind": "push",
+    "event_name": "push",
+    "before": "1111111111111111111111111111111111111111",
+    "after": "2222222222222222222222222222222222222222",
+    "ref": "refs/heads/master",
+    "checkout_sha": "2222222222222222222222222222222222222222",
+    "message": null,
+    "user_id": 1,
+    "user_name": "John Doe",
+    "user_email": "john.doe@company.com",
+    "user_avatar": "https://gitlab.url/uploads/user/avatar/1/avatar.png",
+    "project_id": 1,
+    "project": {
+      "name": "Name of the awesome project",
+      "description": "Description of the awesome project",
+      "web_url": "https://gitlab.url/john.doe/awesome-project",
+      "avatar_url": null,
+      "git_ssh_url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "git_http_url": "https://gitlab.url/john.doe/awesome-project.git",
+      "namespace": "john.doe",
+      "visibility_level": 0,
+      "path_with_namespace": "john.doe/awesome-project",
+      "default_branch": "master",
+      "homepage": "https://gitlab.url/john.doe/awesome-project",
+      "url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "ssh_url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "http_url": "https://gitlab.url/john.doe/awesome-project.git"
+    },
+    "commits": [
+      {
+        "id": "2222222222222222222222222222222222222222",
+        "message": "Awesome commit message\n",
+        "timestamp": "2017-06-26T21:53:16+03:00",
+        "url": "https://gitlab.url/john.doe/awesome-project/commit/2222222222222222222222222222222222222222",
+        "author": {
+          "name": "john.doe",
+          "email": "john.doe@company.com"
+        },
+        "added": [],
+        "modified": [
+          "readme.md"
+        ],
+        "removed": []
+      }
+    ],
+    "total_commits_count": 1,
+    "repository": {
+      "name": "Name of the awesome project",
+      "description": "Description of the awesome project",
+      "url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "homepage": "https://gitlab.url/john.doe/awesome-project",
+      "git_http_url": "https://gitlab.url/john.doe/awesome-project.git",
+      "git_ssh_url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
+      "visibility_level": 0
+    }
+  }
+}

@@ -1,0 +1,8 @@
+--reporter spec
+--colors
+--recursive
+--harmony
+--colors
+--ui bdd
+--timeout 20000
+--bail

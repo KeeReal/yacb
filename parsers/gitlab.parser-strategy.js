@@ -78,7 +78,7 @@ class GitlabParserStrategy extends ParserStrategy {
      * @param data
      */
     parseBuildEvent(data) {
-        const EXPECTED_STATUSES = ["running"];
+        const EXPECTED_STATUSES = ["running", "success"];
         const buildStatus = jp.get(data, "/build_status");
         if (EXPECTED_STATUSES.indexOf(buildStatus) === -1) {
             return null;
@@ -94,24 +94,32 @@ class GitlabParserStrategy extends ParserStrategy {
         const buildName = jp.get(data, "/build_name");
         const buildUrl = `${projectUrl}/builds/${buildId}`;
         
-        const text = [
-            `<${projectUrl}|${projectName}>`,
-            " : ",
-            `<${commitUrl}|${commitShortSHA}>`,
-            " : выполняется ",
-            `<${buildUrl}|${buildName} #${buildId}>`
-        ].join("");
-        
-        
-        const result = { text };
+        const result = {};
+        let stateText = "";
         
         switch (buildStatus) {
             
             case "running":
+                stateText = "выполняется";
                 result.color = "#eeeeee";
                 break;
                 
+            case "success":
+                stateText = "успех";
+                result.color = "#5cb85c";
+                result.footer = `длительность ${Math.ceil(jp.get(data, "/build_duration"))} с`;
+                break;
+                
         }
+    
+    
+        result.text = [
+            `<${projectUrl}|${projectName}>`,
+            " : ",
+            `<${commitUrl}|${commitShortSHA}>`,
+            ` : ${stateText} `,
+            `<${buildUrl}|${buildName} #${buildId}>`
+        ].join("");
         
         return { attachments: [ result ] };
     }

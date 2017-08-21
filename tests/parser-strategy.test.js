@@ -22,6 +22,14 @@ describe("parser-strategy", () => {
         
                 should(result).be.eql(mock.expected);
             });
+    
+    
+            it("success", () => {
+                const mock = require("./mocks/gitlab/build-success-event.gitlab.json");
+                const result = parse(parsers.TYPES.GITLAB, mock.event);
+        
+                should(result).be.eql(mock.expected);
+            });
         });
     });
 });

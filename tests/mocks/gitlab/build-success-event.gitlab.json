@@ -2,8 +2,9 @@
   "expected": {
     "attachments": [
       {
-        "text": "<https://gitlab.url/john.doe/awesome-project|project-name> : <https://gitlab.url/john.doe/awesome-project/commit/2222222222222222222222222222222222222222|22222222> : выполняется <https://gitlab.url/john.doe/awesome-project/builds/1000|job-name #1000>",
-        "color": "#eeeeee"
+        "text": "<https://gitlab.url/john.doe/awesome-project|project-name> : <https://gitlab.url/john.doe/awesome-project/commit/2222222222222222222222222222222222222222|22222222> : успех <https://gitlab.url/john.doe/awesome-project/builds/1000|job-name #1000>",
+        "color": "#5cb85c",
+        "footer": "длительность 11 с"
       }
     ]
   },
@@ -16,12 +17,12 @@
     "build_id": 1000,
     "build_name": "job-name",
     "build_stage": "base",
-    "build_status": "running",
-    "build_started_at": "2017-06-26 21:53:25 +0300",
-    "build_finished_at": null,
-    "build_duration": 0.042775246,
+    "build_status": "success",
+    "build_started_at": "2017-06-26 21:44:14 +0300",
+    "build_finished_at": "2017-06-26 21:44:25 +0300",
+    "build_duration": 10.970012704,
     "build_allow_failure": false,
-    "project_id": 1,
+    "project_id": 211,
     "project_name": "John Doe / project-name",
     "user": {
       "id": 1,
@@ -35,8 +36,8 @@
       "author_name": "john.doe",
       "author_email": "john.doe@company.com",
       "status": "running",
-      "duration": 0,
-      "started_at": "2017-06-26 21:53:25 +0300",
+      "duration": 10,
+      "started_at": "2017-06-26 21:44:14 +0300",
       "finished_at": null
     },
     "repository": {

@@ -9,8 +9,8 @@ const ParserStrategy = require("./parser-strategy");
 class GitlabParserStrategy extends ParserStrategy {
     parse(data) {
         switch (data.object_kind) {
-            case "push":
-                return this.parsePushEvent(data);
+            case "push": return this.parsePushEvent(data);
+            case "build": return this.parseBuildEvent(data);
         }
         
         throw new Error(`Unknown 'object_kind', got: ${data.object_kind}`);
@@ -70,6 +70,50 @@ class GitlabParserStrategy extends ParserStrategy {
         // todo: assert is string
         let p = (ref || "").split("/");
         return p.length === 0 ? "no_ref" : p[p.length - 1];
+    }
+    
+    
+    /**
+     * @private
+     * @param data
+     */
+    parseBuildEvent(data) {
+        const EXPECTED_STATUSES = ["running"];
+        const buildStatus = jp.get(data, "/build_status");
+        if (EXPECTED_STATUSES.indexOf(buildStatus) === -1) {
+            return null;
+        }
+    
+        const projectUrl = jp.get(data, "/repository/homepage");
+        const projectName = jp.get(data, "/repository/name");
+        const commitSHA = jp.get(data, "/sha");
+        const commitShortSHA = commitSHA.substr(0, 8);
+        const commitUrl = `${projectUrl}/commit/${commitSHA}`;
+    
+        const buildId = jp.get(data, "/build_id");
+        const buildName = jp.get(data, "/build_name");
+        const buildUrl = `${projectUrl}/builds/${buildId}`;
+        
+        const text = [
+            `<${projectUrl}|${projectName}>`,
+            " : ",
+            `<${commitUrl}|${commitShortSHA}>`,
+            " : выполняется ",
+            `<${buildUrl}|${buildName} #${buildId}>`
+        ].join("");
+        
+        
+        const result = { text };
+        
+        switch (buildStatus) {
+            
+            case "running":
+                result.color = "#eeeeee";
+                break;
+                
+        }
+        
+        return { attachments: [ result ] };
     }
 }
 

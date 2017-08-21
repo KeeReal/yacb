@@ -1,6 +1,6 @@
 {
   "expected": {
-    "text": "John Doe запушил(а) в ветку <https://gitlab.url/john.doe/awesome-project/commits/master|master> проекта <https://gitlab.url/john.doe/awesome-project|Name of the awesome project>",
+    "text": "John Doe запушил(а) в ветку <https://gitlab.url/john.doe/awesome-project/commits/master|master> проекта <https://gitlab.url/john.doe/awesome-project|project-name>",
     "attachments": [
       {
         "text": "<https://gitlab.url/john.doe/awesome-project/commit/2222222222222222222222222222222222222222|22222222> Awesome commit message\n",
@@ -22,7 +22,7 @@
     "user_avatar": "https://gitlab.url/uploads/user/avatar/1/avatar.png",
     "project_id": 1,
     "project": {
-      "name": "Name of the awesome project",
+      "name": "project-name",
       "description": "Description of the awesome project",
       "web_url": "https://gitlab.url/john.doe/awesome-project",
       "avatar_url": null,
@@ -56,7 +56,7 @@
     ],
     "total_commits_count": 1,
     "repository": {
-      "name": "Name of the awesome project",
+      "name": "project-name",
       "description": "Description of the awesome project",
       "url": "ssh://git@gitlab.url/john.doe/awesome-project.git",
       "homepage": "https://gitlab.url/john.doe/awesome-project",

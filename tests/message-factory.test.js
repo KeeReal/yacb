@@ -2,29 +2,29 @@
 
 
 const should = require("should");
-const parsers = require("../parsers");
-const GitlabParserStrategy = require("../parsers/gitlab.parser-strategy");
+const factories = require("../message-factories");
+const GitlabToSlackMessageFactory = require("../message-factories/gitlab-to-slack.message-factory");
 
 
-describe("parser-strategy", () => {
+describe("message-factory", () => {
     it("throws an error because unknown 'type' has been given", () => {
         (function() {
-            parsers.create(null);
+            factories.create(null);
         }).should.throw(/Unknown type/);
     });
     
     
-    describe("gitlab-parser", () => {
+    describe("gitlab-to-slack-message-factory", () => {
         it("creates GitlatParserStrategy", () => {
-            const strategy = parsers.create(parsers.TYPES.GITLAB);
-            should(strategy).be.instanceOf(GitlabParserStrategy);
+            const factory = factories.create(factories.TYPES.GITLAB_TO_SLACK);
+            should(factory).be.instanceOf(GitlabToSlackMessageFactory);
         });
         
         
-        describe("parse given event", () => {
+        describe("parses given event and returns expected message body", () => {
             it("push", () => {
                 const mock = require("./mocks/gitlab/push-event.gitlab.json");
-                const result = parse(parsers.TYPES.GITLAB, mock.event);
+                const result = createMessage(factories.TYPES.GITLAB_TO_SLACK, mock.event);
                 
                 should(result).be.eql(mock.expected);
             });
@@ -32,7 +32,7 @@ describe("parser-strategy", () => {
     
             it("running", () => {
                 const mock = require("./mocks/gitlab/build-running-event.gitlab.json");
-                const result = parse(parsers.TYPES.GITLAB, mock.event);
+                const result = createMessage(factories.TYPES.GITLAB_TO_SLACK, mock.event);
         
                 should(result).be.eql(mock.expected);
             });
@@ -40,7 +40,7 @@ describe("parser-strategy", () => {
     
             it("success", () => {
                 const mock = require("./mocks/gitlab/build-success-event.gitlab.json");
-                const result = parse(parsers.TYPES.GITLAB, mock.event);
+                const result = createMessage(factories.TYPES.GITLAB_TO_SLACK, mock.event);
         
                 should(result).be.eql(mock.expected);
             });
@@ -48,7 +48,7 @@ describe("parser-strategy", () => {
     
             it("failed", () => {
                 const mock = require("./mocks/gitlab/build-failed-event.gitlab.json");
-                const result = parse(parsers.TYPES.GITLAB, mock.event);
+                const result = createMessage(factories.TYPES.GITLAB_TO_SLACK, mock.event);
         
                 should(result).be.eql(mock.expected);
             });
@@ -56,7 +56,7 @@ describe("parser-strategy", () => {
     
             it("canceled", () => {
                 const mock = require("./mocks/gitlab/build-canceled-event.gitlab.json");
-                const result = parse(parsers.TYPES.GITLAB, mock.event);
+                const result = createMessage(factories.TYPES.GITLAB_TO_SLACK, mock.event);
         
                 should(result).be.eql(mock.expected);
             });
@@ -64,7 +64,7 @@ describe("parser-strategy", () => {
     
             it("returns 'null' on other cases", () => {
                 const mock = require("./mocks/gitlab/build-unknown-event.gitlab.json");
-                const result = parse(parsers.TYPES.GITLAB, mock.event);
+                const result = createMessage(factories.TYPES.GITLAB_TO_SLACK, mock.event);
         
                 should(result).be.eql(mock.expected);
             });
@@ -73,7 +73,6 @@ describe("parser-strategy", () => {
 });
 
 
-function parse(type, json) {
-    const strategy = parsers.create(type);
-    return strategy.parse(json);
+function createMessage(type, json) {
+    return factories.create(type).createMessageBody(json);
 }

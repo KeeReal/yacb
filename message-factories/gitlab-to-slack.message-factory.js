@@ -3,17 +3,20 @@
 
 const jp = require("jsonpointer");
 const _ = require("underscore");
-const ParserStrategy = require("./parser-strategy");
+const MessageFactory = require("./message-factory");
 
 
-class GitlabParserStrategy extends ParserStrategy {
-    parse(data) {
-        switch (data.object_kind) {
+class GitlabToSlackMessageFactory extends MessageFactory {
+    
+    
+    createMessageBody(data) {
+        const objectKind = jp.get(data, "/object_kind");
+        switch (objectKind) {
             case "push": return this.parsePushEvent(data);
             case "build": return this.parseBuildEvent(data);
         }
         
-        throw new Error(`Unknown 'object_kind', got: ${data.object_kind}`);
+        throw new Error(`Unknown object_kind '${objectKind}'`);
     }
     
     
@@ -138,4 +141,4 @@ class GitlabParserStrategy extends ParserStrategy {
 }
 
 
-module.exports = GitlabParserStrategy;
+module.exports = GitlabToSlackMessageFactory;

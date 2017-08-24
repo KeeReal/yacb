@@ -2,8 +2,8 @@
 
 
 const should = require("should");
-const factories = require("../message-factories");
-const GitlabToSlackMessageFactory = require("../message-factories/gitlab-to-slack.message-factory");
+const factories = require("../lib/message-factories");
+const GitlabToSlackMessageFactory = require("../lib/message-factories/gitlab-to-slack.message-factory");
 
 
 describe("message-factory", () => {

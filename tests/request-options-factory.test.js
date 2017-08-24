@@ -3,8 +3,8 @@
 
 const _ = require("underscore");
 const should = require("should");
-const optionFactory = require("../request-options-factory");
-const SlackRequestOptionsFactory = require("../request-options-factory/slack.request-options-factory");
+const optionFactory = require("../lib/request-options-factory");
+const SlackRequestOptionsFactory = require("../lib/request-options-factory/slack.request-options-factory");
 
 
 

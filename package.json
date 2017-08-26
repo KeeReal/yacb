@@ -4,6 +4,10 @@
   "description": "A Simple bot which recieves events from GitLab and sends them to Slack",
   "main": "server",
   "dependencies": {
+    "ajv": "^5.2.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "request": "^2.81.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

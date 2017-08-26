@@ -1,0 +1,60 @@
+{
+  "id": "config.schema",
+  "definitions": {
+    "types": {
+      "enum": [ "gitlab", "slack" ]
+    },
+    "slackSettings": {
+      "type": "object",
+      "required": [
+        "uri"
+      ],
+      "properties": {
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "channel": { "type": "string" },
+        "username": { "type": "string" }
+      }
+    }
+  },
+
+  "properties": {
+    "port": { "type": "integer" },
+    "host": { "format": "ipv4" },
+    "endpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "destination",
+          "path"
+        ],
+        "properties": {
+          "path": { "type": "string" },
+          "source": {
+            "type": "object",
+            "required": [ "type" ],
+            "properties": {
+              "type": { "$ref": "#/definitions/types" }
+            }
+          },
+          "destination": {
+            "type": "object",
+            "required": [ "type", "settings" ],
+            "properties": {
+              "type": { "$ref": "#/definitions/types" },
+              "settings": {
+                "oneOf": [
+                  { "$ref": "#/definitions/slackSettings" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

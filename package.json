@@ -1,8 +1,8 @@
 {
-  "name": "slack-bot",
-  "version": "0.0.1",
-  "description": "A Simple bot which recieves events from GitLab and sends them to Slack",
-  "main": "server",
+  "name": "yacb",
+  "version": "0.1.0",
+  "description": "Yet Another CI Bot",
+  "main": "main.js",
   "dependencies": {
     "ajv": "^5.2.2",
     "body-parser": "^1.17.2",
@@ -17,6 +17,6 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --opts ./mocha.opts tests/**/*.js"
   },
-  "author": "kirill.ponomarev shacaron@gmail.com",
-  "license": "ISC"
+  "author": "kirill.ponomarev <shacaron@gmail.com>",
+  "license": "MIT"
 }

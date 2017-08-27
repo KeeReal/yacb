@@ -52,7 +52,7 @@ function loadConfig() {
     
     let pathToConfig = null;
     
-    if (argv.length >= 2) {
+    if (argv.length.length >= 2) {
         pathToConfig = path.join(__dirname, "" + argv[2]);
     } else {
         pathToConfig = path.join(__dirname, "default.config.json");

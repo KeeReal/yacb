@@ -4,7 +4,6 @@
   "endpoints": [
     {
       "path": "/input",
-      "type": "gitlab-to-slack",
       "source": {
         "type": "gitlab"
       },

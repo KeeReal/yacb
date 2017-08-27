@@ -1,0 +1,20 @@
+{
+  "port": 8080,
+  "host": "0.0.0.0",
+  "endpoints": [
+    {
+      "path": "/input",
+      "type": "gitlab-to-slack",
+      "source": {
+        "type": "gitlab"
+      },
+      "destination": {
+        "type": "slack",
+        "options": {
+          "uri": "https://YOUR-SLACK-HOOK-URL",
+          "channel": "#some-channel"
+        }
+      }
+    }
+  ]
+}

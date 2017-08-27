@@ -1,10 +1,11 @@
 {
   "id": "config.schema",
+
   "definitions": {
     "types": {
       "enum": [ "gitlab", "slack" ]
     },
-    "slackSettings": {
+    "slackOptions": {
       "type": "object",
       "required": [
         "uri"
@@ -20,6 +21,12 @@
     }
   },
 
+  "type": "object",
+  "required": [
+    "port",
+    "host",
+    "endpoints"
+  ],
   "properties": {
     "port": { "type": "integer" },
     "host": { "format": "ipv4" },
@@ -43,12 +50,12 @@
           },
           "destination": {
             "type": "object",
-            "required": [ "type", "settings" ],
+            "required": [ "type", "options" ],
             "properties": {
               "type": { "$ref": "#/definitions/types" },
-              "settings": {
+              "options": {
                 "oneOf": [
-                  { "$ref": "#/definitions/slackSettings" }
+                  { "$ref": "#/definitions/slackOptions" }
                 ]
               }
             }

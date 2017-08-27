@@ -57,22 +57,22 @@ describe("config-validator", () => {
         });
     
     
-        it("slack settings", () => {
+        it("slack options", () => {
             const valid = {
                 endpoints: [
-                    { destination: { settings: {
-                        uri: "https://hooks.slack.com/services/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"
+                    { destination: { options: {
+                        uri: "https://hooks.slack.com/services/aa/dd/aa"
                     }}}
                 ]
             };
             const invalid = {
                 endpoints: [
-                    { destination: { settings: {
+                    { destination: { options: {
                         uri: "22"
                     }}}
                 ]
             };
-            const re = /'\.endpoints\[0]\.destination\.settings\.uri' should match format "uri"/;
+            const re = /'\.endpoints\[0]\.destination\.options\.uri' should match format "uri"/;
         
             should(validate(valid)).not.match(re);
             should(validate(invalid)).match(re);

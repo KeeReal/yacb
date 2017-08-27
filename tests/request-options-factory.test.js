@@ -3,6 +3,7 @@
 
 const _ = require("underscore");
 const should = require("should");
+const consts = require("../lib/consts");
 const optionFactory = require("../lib/request-options-factory");
 const SlackRequestOptionsFactory = require("../lib/request-options-factory/slack.request-options-factory");
 
@@ -18,7 +19,7 @@ describe("request-options-factory", () => {
     
     describe("slack.request-options-factory", () => {
         it("creates SlackRequestOptionsFactory", () => {
-            const factory = optionFactory.create(optionFactory.TYPES.SLACK);
+            const factory = optionFactory.create(consts.TYPES.SLACK);
             should(factory).be.instanceOf(SlackRequestOptionsFactory);
         });
         
@@ -34,7 +35,7 @@ describe("request-options-factory", () => {
                     json:true
                 };
                 
-                const factory = optionFactory.create(optionFactory.TYPES.SLACK, config);
+                const factory = optionFactory.create(consts.TYPES.SLACK, config);
                 const options = factory.createOptions(message);
                 should(options).be.eql(expected);
             });
@@ -57,7 +58,7 @@ describe("request-options-factory", () => {
                     json: true
                 };
                 
-                const factory = optionFactory.create(optionFactory.TYPES.SLACK, config);
+                const factory = optionFactory.create(consts.TYPES.SLACK, config);
                 const options = factory.createOptions(message);
                 should(options).be.eql(expected);
             });
